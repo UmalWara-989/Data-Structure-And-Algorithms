@@ -14,7 +14,8 @@ public static void conquer(int[] values, int si, int mid, int ei){
   //Comparing both arrays
   while (ind_1<=mid && ind_2<=ei){
   if (values[ind_1]<=values[ind_2]){      /*From here programmer can decide that array arrange in ascending
-  //Assigning value and increment           or in descending order*/
+                                            or in descending order*/
+  //Assigning value and increment           
   merged[x++] = values[ind_1++];
     }else {
     merged[x++] = values[ind_2++];
@@ -25,10 +26,12 @@ public static void conquer(int[] values, int si, int mid, int ei){
   while (ind_1<=mid){
   merged[x++] = values[ind_1++];
     }
+  
   //Second array
   while (ind_2<=ei){
   merged[x++] = values[ind_2++];
     }
+  
   //Create new array
   for (int i=0, j=si; i<merged.length; i++, j++){
   values[j] = merged[i];
@@ -53,6 +56,8 @@ public static void Divide(int[] values, int si, int ei){
   //External method call
   conquer(values,si,mid,ei);
 }
+
+//Main Method  
 public static void main(String[] args){
   //Merge Sort
   int values[] = {6,3,5,9,2,8};

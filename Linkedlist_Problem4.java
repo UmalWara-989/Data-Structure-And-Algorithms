@@ -6,7 +6,7 @@ class Linkedlist_Problem4 {
   private int size;
 
 // Constructor
-  Linkedlist_Problem3(){
+  Linkedlist_Problem4(){
   this.size = 0;
     }
 

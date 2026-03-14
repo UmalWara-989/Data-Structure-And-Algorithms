@@ -1,6 +1,8 @@
+// Q:5 Find And delete the nth node from the end of linked list
+
 class Linkedlist_Problem7 {
 Node head;
-private int size;
+private String size;
   
 // Constructor
  Linkedlist_Problem7(){
@@ -9,11 +11,11 @@ private int size;
   
 // Nested class
   class Node{
-   int data;
+   String data;
    Node next;
     
 // Constructor
-    Node(int data){
+    Node(String data){
     this.data = data;
     this.next = null;
     size++;
@@ -21,7 +23,7 @@ private int size;
 } 
   
 // Add - last     --> By default
-public void Add_Last(int data){
+public void Add_Last(String data){
   Node new_node = new Node(data);
     if (head == null){
       head = new_node;
@@ -53,24 +55,65 @@ public void Print_list() {
     return size;
     }
   
+// Actual Solution
+ public Node Delete_nthNode(Node head, int n){
+  // Corner case
+  if (n > size || n <= 0) {
+    System.out.println("Invalid index!");
+    return head;
+    }
+  if (head.next==null){
+        return null;
+    }
+   
+  //Size
+  int size = 0;
+  Node current_Node = head;
+  while (current_Node!=null){
+    current_Node = current_Node.next;
+    size++;
+  }
+  // Corner case
+  if (n==size){
+      return head.next;
+  }
+   
+  int Search = size-n;
+  Node prev = head;
+  int i = 1;
+  while (i<Search){
+    prev = prev.next;
+    i++;
+  }
+   
+  System.out.println("Value at index "+(size-n)+" is : \'"+prev.next.data+"\'");
+  prev.next = prev.next.next;
+   
+  return head;
+} 
+  
  //Main method
 public static void main(String[] args){
   
- Linked_List_Problem_3 list =   new Linked_List_Problem_3();
+// Q:5 Solution
+Linked_List_Advanced_Questions list = new Linked_List_Advanced_Questions();
+list.Add_Last("Umal");
+list.Add_Last("wara");
+list.Add_Last("John");
+list.Add_Last("Tom");
+list.Add_Last("Seimon");
+list.Add_Last("Roy");
   
-  // Q:3 Solution
-   list.Add_Last(1);
-   list.Add_Last(2);
-   list.Add_Last(3);
-   list.Add_Last(4);
-   list.Add_Last(5);
-   list.Add_Last(6);
-   list.Add_Last(7);
+System.out.println("\"Q:5\"");
+System.out.println("\"Original List\"");
+list.Print_list();
   
-   list.Print_list();
-   list.head = list.Reverse_Between(list.head,1,6);
-   list.Print_list();
+list.head = list.Delete_nthNode(list.head,4);
+System.out.println("\"Modified List\"");
+list.Print_list();
   
-   System.out.println(); 
+System.out.println();
+  
+  
 }
 }

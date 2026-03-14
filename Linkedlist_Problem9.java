@@ -57,6 +57,7 @@ public void Print_list() {
     }
   
 // Actual Solution
+// Floyd's Algorithm  
 public boolean Cycle(Node head){
 // Corner case
   if (head==null){

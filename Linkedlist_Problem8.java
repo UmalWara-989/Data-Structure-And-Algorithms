@@ -1,6 +1,6 @@
 class Linkedlist_Problem8 {
 Node head;
-private int size;
+private String size;
   
 // Constructor
  Linkedlist_Problem8(){
@@ -9,11 +9,11 @@ private int size;
   
 // Nested class
   class Node{
-   int data;
+   String data;
    Node next;
     
 // Constructor
-    Node(int data){
+    Node(String data){
     this.data = data;
     this.next = null;
     size++;
@@ -21,7 +21,7 @@ private int size;
 } 
   
 // Add - last     --> By default
-public void Add_Last(int data){
+public void Add_Last(String data){
   Node new_node = new Node(data);
     if (head == null){
       head = new_node;
@@ -56,21 +56,6 @@ public void Print_list() {
  //Main method
 public static void main(String[] args){
   
- Linked_List_Problem_3 list =   new Linked_List_Problem_3();
-  
-  // Q:3 Solution
-   list.Add_Last(1);
-   list.Add_Last(2);
-   list.Add_Last(3);
-   list.Add_Last(4);
-   list.Add_Last(5);
-   list.Add_Last(6);
-   list.Add_Last(7);
-  
-   list.Print_list();
-   list.head = list.Reverse_Between(list.head,1,6);
-   list.Print_list();
-  
-   System.out.println(); 
+ 
 }
 }

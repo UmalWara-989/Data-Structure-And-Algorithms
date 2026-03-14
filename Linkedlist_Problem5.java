@@ -1,3 +1,6 @@
+// Q:3 Reverse linked list between two positions
+// Time complexity = O(n) and Space complexity = O(1)
+
 class Linkedlist_Problem5 {
 Node head;
 private int size;
@@ -52,6 +55,37 @@ public void Print_list() {
   public int Get_Size(){
     return size;
     }
+
+// Actual Solution  
+public Node Reverse_Between(Node head, int left, int right){
+// Create a dummy node to mark the head of this list
+  Node dummy = new Node(0);
+  dummy.next = head;
+  
+// Make markers for current node and for the node before reversing
+  Node left_node = dummy;
+  Node Current_node = head;
+  for (int i=0; i<left-1; i++){
+    left_node = left_node.next;
+    Current_node = Current_node.next;
+  }
+  
+// Make a marker to node where we start reversing
+  Node sublist_head = Current_node;
+  Node Pre_node = null;
+  
+  for (int j=0; j<=right-left; j++){
+    Node next_node = Current_node.next;
+    Current_node.next = Pre_node;
+    Pre_node = Current_node;
+    Current_node = next_node;
+  }
+  
+// Join the pieces
+  left_node.next = Pre_node;
+  sublist_head.next = Current_node;
+  return dummy.next;
+}  
   
  //Main method
 public static void main(String[] args){

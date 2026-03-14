@@ -1,3 +1,6 @@
+// Q:4 Remove duplicates nodes from the sorted linked list
+// Time complexity = O(n) and Space complexity = O(1)
+
 class Linkedlist_Problem6 {
 Node head;
 private int size;
@@ -53,24 +56,61 @@ public void Print_list() {
     return size;
     }
   
+// Actual Solution
+  public Node Remove_Duplicates(Node head){
+  // Corner cases
+    if (head==null){
+        return null;
+    }
+    if (head.next==null){
+        return head;
+    }
+    
+  // Create two pointers
+    Node previous = head;
+    Node temp = previous.next;
+    int count = 0;
+    while (temp!=null){
+  // For checking duplicates
+    if(temp.data == previous.data){
+      temp = temp.next;
+      count++;
+      continue;
+        }
+      
+  // Aheading pointers
+    previous.next = temp;
+    previous = temp;
+    temp = temp.next;
+    }
+    
+   if(count==0){
+    System.out.println("Not any duplicates found in the list!");
+    }
+   previous.next = null;
+   return head;
+}
+  
  //Main method
 public static void main(String[] args){
+// Q:4 Solution  
+Linked_List_Problem_3 list_2 = new Linked_List_Problem_3();
   
- Linked_List_Problem_3 list =   new Linked_List_Problem_3();
+list_2.Add_Last(1);
+list_2.Add_Last(2);
+list_2.Add_Last(3);
+list_2.Add_Last(3);
+list_2.Add_Last(5);
+list_2.Add_Last(6);
+list_2.Add_Last(7);
+list_2.Add_Last(9);
   
-  // Q:3 Solution
-   list.Add_Last(1);
-   list.Add_Last(2);
-   list.Add_Last(3);
-   list.Add_Last(4);
-   list.Add_Last(5);
-   list.Add_Last(6);
-   list.Add_Last(7);
+System.out.println("\"List with Duplicates\"");
+list_2.Print_list();
   
-   list.Print_list();
-   list.head = list.Reverse_Between(list.head,1,6);
-   list.Print_list();
-  
-   System.out.println(); 
+list_2.head = list_2.Remove_Duplicates(list_2.head);
+System.out.println("\"List without Duplicates\"");
+list_2.Print_list();
+ 
 }
 }

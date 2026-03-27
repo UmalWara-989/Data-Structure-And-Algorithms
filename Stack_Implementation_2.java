@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 // -- Stack Implementation from scratch using ArrayList --
 
-public class Stack_Arraylist {
+public class Stack_Implementation_2 {
 //  Static class
 static class Stacking{
   static ArrayList<String> l1 = new ArrayList<>();
